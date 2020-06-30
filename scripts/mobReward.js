@@ -1,11 +1,11 @@
 import {
-    updateBalance
+	getBalance,
+	updateBalance
 } from "ez:economy";
 
 import {
-    getPlayerByNAME
+	getPlayerByNAME
 } from "ez:player";
-
 
 const system = server.registerSystem(0, 0);
 
@@ -42,8 +42,11 @@ system.listenForEvent("minecraft:entity_death", ({data: eventData}) => {
     };
     
     if (deadEntityIdentifier in mobs) {
+		let moneyOld = getBalance(player)
         updateBalance(player, mobs[deadEntityIdentifier], "add");
+		system.executeCommand(`title "${player.name}" actionbar §fYou earned §e$${mobs[deadEntityIdentifier]} §ffor killing §6${deadEntity.__identifier__}\n§7Previous: §b${moneyOld} §7=> Now: §b${getBalance(player)}`, () => {});
 		//console.log("Player " + player.name + " got $" + mobs[deadEntityIdentifier] + " for killing " + deadEntity.__identifier__);
+		//console.log(moneyOld, getBalance(player))
     }
   }
 )
