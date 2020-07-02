@@ -1,5 +1,4 @@
 const system = server.registerSystem(0, 0);
-console.log("antiXray.js loaded");
 
 system.listenForEvent("minecraft:player_destroyed_block", ({data: eventData}) => {
 		const {
@@ -38,3 +37,4 @@ system.listenForEvent("minecraft:player_destroyed_block", ({data: eventData}) =>
 		}
 	}
 )
+console.log("antiXray.js loaded");
