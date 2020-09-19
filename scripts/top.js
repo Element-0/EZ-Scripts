@@ -8,7 +8,7 @@ const system = server.registerSystem(0, 0);
 
 let testBlockNum = 100;
 
-registerCommand("top", "Teleport to the very top air block.", 0);
+registerCommand("top", "Teleport to the very top air block.", 1);
 
 registerOverride("top", [], function () {
 	var tickingArea = system.getComponent(this.entity.vanilla, "minecraft:tick_world").data.ticking_area;
